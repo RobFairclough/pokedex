@@ -1,9 +1,9 @@
 ## Planning
 
-Copy this list into your project
-Outline functionality of your app
+Copy this list into your project -tick
+Outline functionality of your app -tick
 Draw main views of app
-Break out components from your views
+Break out components from your views -tick
 Name your components
 Draw component hierarchy
 Plan routing
