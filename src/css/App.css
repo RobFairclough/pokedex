@@ -1,0 +1,78 @@
+.App {
+  display: flex;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.page {
+  height: 100vh;
+  width: 100vh;
+  max-width: 350px;
+  max-height: 700px;
+  border: solid 2px black;
+  background-color: red;
+}
+@media only screen and (min-width: 600px) {
+  .page {
+    /* temp */
+    height: 500px;
+    width: 250px;
+  }
+}
+#outer-case {
+  display: grid;
+}
+#open-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid yellow;
+}
+#case-ridge {
+  position: relative;
+  height: 0.5em;
+  left: 50%;
+  top: 90%;
+  width: 40%;
+  transform: translateX(-50%);
+  border-radius: 25px;
+  border: black solid 2px;
+}
+#inner-left-page {
+  /* inline grid in media query for desktop view? */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 2fr 5fr 3fr;
+}
+#sprite-container {
+  grid-column: 1 / span 3;
+  grid-row: 2;
+  background-color: rgb(255, 242, 205);
+  margin: 1em;
+  text-align: center;
+}
+.red-circle {
+  display: inline-block;
+  background-color: red;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 100%;
+  border: 1px solid black;
+  margin: 5px auto;
+}
+#gap-circle {
+  display: inline-block;
+  background: transparent;
+  width: 2em;
+}
+#inner-right-page {
+  display: grid;
+}
