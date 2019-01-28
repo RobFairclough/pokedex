@@ -67,24 +67,22 @@ class App extends Component {
     } = this.state;
     return (
       <div className="App">
-        <div>
-          <OuterCase getNewPokemon={this.getNewPokemon} />
-          <InnerLeft
-            getNewPokemon={this.getNewPokemon}
-            pokemonID={pokemonID}
-            name={name}
-            id={pokemonID}
-            pokemonObj={pokemonObj}
-            sprites={sprites}
-            headerLight={this.headerLight}
-            descriptions={descriptions}
-            genus={genus}
-            height={height}
-            weight={weight}
-            type={type}
-          />
-          <InnerRight pokemonID={pokemonID} />
-        </div>
+        <OuterCase getNewPokemon={this.getNewPokemon} />
+        <InnerLeft
+          getNewPokemon={this.getNewPokemon}
+          pokemonID={pokemonID}
+          name={name}
+          id={pokemonID}
+          pokemonObj={pokemonObj}
+          sprites={sprites}
+          headerLight={this.headerLight}
+          descriptions={descriptions}
+          genus={genus}
+          height={height}
+          weight={weight}
+          type={type}
+        />
+        <InnerRight pokemonID={pokemonID} />
       </div>
     );
   }

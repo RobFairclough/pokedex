@@ -4,9 +4,6 @@
   display: flex;
 }
 body {
-  display: flex;
-  align-items: center;
-  justify-items: center;
   background-color: #52acff;
   background-image: linear-gradient(304deg, #52acff 25%, #ffe32c 100%);
 }
