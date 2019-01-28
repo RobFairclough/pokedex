@@ -1,6 +1,17 @@
 #sprite-bg {
-  background: black;
+  background: rgb(103, 148, 123);
+  margin: 0 1em 0.5em;
+  border: 1px solid black;
+  height: 10em;
 }
 
 .sprite-img {
+  width: 10em;
+  height: auto;
+}
+
+#main-sprite {
+}
+.poke-text {
+  font-family: 'Press Start 2p', monospace;
 }

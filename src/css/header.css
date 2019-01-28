@@ -16,15 +16,30 @@
   border-radius: 100%;
   margin: 0.5em;
   border: 1px solid black;
+  transition: 0.5s;
+}
+.orb-active {
+  /* transition: 0.5s; */
+  box-shadow: 0px 0px 1.5px 1.5px white;
 }
 #red {
   background: radial-gradient(rgba(236, 106, 106, 0.733), rgb(150, 1, 1));
 }
+#red-active {
+  background: radial-gradient(rgba(230, 152, 152, 0.774), rgb(226, 0, 0));
+}
 #yellow {
-  background: radial-gradient(rgb(250, 237, 50), yellow);
+  background: radial-gradient(rgb(236, 228, 133), rgb(201, 201, 0));
+}
+
+#yellow-active {
+  background: radial-gradient(rgb(245, 237, 128), yellow);
 }
 #green {
   background: radial-gradient(rgb(104, 241, 76), green);
+}
+#green-active {
+  background: radial-gradient(rgb(134, 248, 112), rgb(0, 219, 0));
 }
 #blue-orb {
   width: 3em;
