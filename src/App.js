@@ -19,10 +19,15 @@ class App extends Component {
     headerLight: 'green'
   };
   getNewPokemon = id => {
+    // if (!id || id < 1 || id > 802) {
+    //   return Promise.reject();
+    // }
     // set yellow light on header
     this.setState({ headerLight: 'yellow' });
+    console.log(id);
     P.getPokemonByName(id)
       .then(pokemonResponse => {
+        console.log(pokemonResponse);
         this.setState({
           pokemonID: id,
           sprites: pokemonResponse.sprites,
@@ -58,6 +63,7 @@ class App extends Component {
   };
   componentDidMount() {
     this.getNewPokemon(this.state.pokemonID);
+    this.setState({ id: localStorage.getItem('id') });
   }
   render() {
     console.log('render');
