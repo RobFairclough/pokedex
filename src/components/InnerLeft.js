@@ -1,34 +1,25 @@
 import React from 'react';
 import Header from './Header';
 import Sprite from './Sprite';
-import { camelCase } from '../utils';
+import Controls from './Controls';
 
-const InnerLeft = props => {
-  const { pokemonObj } = props;
-  const pokemonName = camelCase(pokemonObj.name);
-  const image = pokemonObj.sprites.front_default;
-  console.log(image);
-  // const image = pokemonObj.sprites.default_front;
-  // const pokemonName = pokemonObj.name;
+const InnerLeft = ({ sprites, name, headerLight, id, getNewPokemon }) => {
+  const image = sprites.front_default;
   return (
     <>
       <div id="inner-left-page" className="page">
-        <Header light={props.headerLight} />
+        <Header light={headerLight} />
         <div id="sprite-container">
           <shape className="red-circle" />
           <shape id="gap-circle" />
           <shape className="red-circle" />
           {/* sprite component */}
-          <Sprite
-            pokemonName={pokemonName}
-            spriteImg={image}
-            loc="main-sprite"
-          />
-          <span className="poke-text">{pokemonName}</span>
+          <Sprite pokemonName={name} spriteImg={image} loc="main-sprite" />
+          <span className="poke-text">{name}</span>
         </div>
 
         {/* buttons for image - cry, shiny toggle, front/back toggle */}
-        <div id="control-container" />
+        <Controls id={id} getNewPokemon={getNewPokemon} />
         {/* flavor text and height/weight boxes */}
       </div>
     </>

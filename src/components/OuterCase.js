@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from './Header';
 const OuterCase = props => {
   const openPokedex = e => {
     props.getNewPokemon(1);

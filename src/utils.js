@@ -5,4 +5,8 @@ const camelCase = str => {
     .join(' ');
 };
 
-export { camelCase };
+const getEn = arr => {
+  return arr.filter(obj => obj.language.name === 'en');
+};
+
+export { camelCase, getEn };

@@ -1,0 +1,26 @@
+.pokedex-controls {
+  grid-column: 2 / 3;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+#prev {
+  width: 0;
+  height: 0;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-right: 0.6em solid blue;
+}
+
+#next {
+  width: 0;
+  height: 0;
+  border-top: 0.6em solid transparent;
+  border-bottom: 0.6em solid transparent;
+  border-left: 0.6em solid blue;
+}
+#num-selector {
+  width: 3em;
+}

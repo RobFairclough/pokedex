@@ -17,3 +17,12 @@ stats
 habitat?
 evolutions
 abilities?
+
+## INFO NEEDED FROM API RESPONSE
+
+Name
+Sprite(s)
+Flavor text
+
+Evolutions
+Height/weight
