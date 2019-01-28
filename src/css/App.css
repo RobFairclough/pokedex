@@ -7,6 +7,8 @@ body {
   display: flex;
   align-items: center;
   justify-items: center;
+  background-color: #52acff;
+  background-image: linear-gradient(304deg, #52acff 25%, #ffe32c 100%);
 }
 
 .page {
@@ -62,6 +64,7 @@ body {
   margin: 0.5em 1em;
   text-align: center;
 }
+
 .red-circle {
   display: inline-block;
   background-color: red;

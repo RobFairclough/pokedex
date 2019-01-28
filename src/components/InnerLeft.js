@@ -10,7 +10,10 @@ const InnerLeft = ({
   headerLight,
   id,
   getNewPokemon,
-  descriptions = 'Not found'
+  genus,
+  height,
+  weight,
+  descriptions = ''
 }) => {
   const image = name
     ? sprites.front_default
@@ -26,12 +29,13 @@ const InnerLeft = ({
           {/* sprite component */}
           <Sprite pokemonName={name} spriteImg={image} loc="main-sprite" />
           <span className="poke-text">{name}</span>
+          <br />
+          <i className="poke-text">{genus}</i>
         </div>
-
         {/* buttons for image - cry, shiny toggle, front/back toggle */}
         <Controls id={id} getNewPokemon={getNewPokemon} />
         {/* flavor text and height/weight boxes */}
-        <Bio descriptions={descriptions} />
+        <Bio descriptions={descriptions} height={height} weight={weight} />
       </div>
     </>
   );

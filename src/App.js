@@ -19,33 +19,30 @@ class App extends Component {
     this.headerLight = 'yellow';
     P.getPokemonByName(id)
       .then(response => {
+        console.log(response);
         this.pokemonResponse = response;
         this.headerLight = 'green';
         return P.getPokemonSpeciesByName(id);
       })
       .then(speciesResponse => {
-        const { flavor_text_entries, names, evolution_chain } = speciesResponse;
+        const { flavor_text_entries, names, genera } = speciesResponse;
+        const { sprites, height, weight, types } = this.pokemonResponse;
         this.setState({
+          sprites,
+          height,
+          weight,
           pokemonID: id,
-          sprites: this.pokemonResponse.sprites,
-          pokemonObj: this.pokemonResponse,
           name: getEn(names)[0].name,
-          descriptions: getEn(flavor_text_entries)
+          descriptions: getEn(flavor_text_entries),
+          genus: getEn(genera)[0].genus
         });
         localStorage.setItem('id', this.state.pokemonID);
       })
       .catch(err => {
-        // set red light on headerheader
         console.log(err);
         this.setState({
-          name: 'Invalid Pokemon',
-          sprites: {
-            front_default: 'err'
-          },
-          pokemonObj: {
-            name: 'Invalid Pokemon',
-            sprites: { front_default: 'err' }
-          }
+          pokemonID: '',
+          name: ''
         });
         this.headerLight = 'red';
       });
@@ -57,24 +54,39 @@ class App extends Component {
   }
   render() {
     console.log('render');
-    const { pokemonID, pokemonObj, descriptions, sprites, name } = this.state;
+    const {
+      pokemonID,
+      pokemonObj,
+      descriptions,
+      sprites,
+      name,
+      genus,
+      height,
+      weight,
+      type
+    } = this.state;
     return (
       <div className="App">
-        <OuterCase getNewPokemon={this.getNewPokemon} />
-        <InnerLeft
-          getNewPokemon={this.getNewPokemon}
-          pokemonID={pokemonID}
-          name={name}
-          id={pokemonID}
-          pokemonObj={pokemonObj}
-          sprites={sprites}
-          headerLight={this.headerLight}
-          descriptions={descriptions}
-        />
-        <InnerRight pokemonID={pokemonID} />
+        <div>
+          <OuterCase getNewPokemon={this.getNewPokemon} />
+          <InnerLeft
+            getNewPokemon={this.getNewPokemon}
+            pokemonID={pokemonID}
+            name={name}
+            id={pokemonID}
+            pokemonObj={pokemonObj}
+            sprites={sprites}
+            headerLight={this.headerLight}
+            descriptions={descriptions}
+            genus={genus}
+            height={height}
+            weight={weight}
+            type={type}
+          />
+          <InnerRight pokemonID={pokemonID} />
+        </div>
       </div>
     );
-    // });
   }
 }
 
