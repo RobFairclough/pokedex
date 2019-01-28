@@ -10,36 +10,25 @@ const P = new Pokedex();
 
 class App extends Component {
   state = {
-    pokemonID: '1',
-    name: 'Loading...',
-    sprites: {
-      front_default:
-        'https://upload.wikimedia.org/wikipedia/commons/2/23/Pok%C3%A9_Ball.svg'
-    },
-    headerLight: 'green'
+    pokemonID: localStorage.getItem('id') || 1,
+    name: ''
   };
+  headerLight = 'green';
+  pokemonResponse = {};
   getNewPokemon = id => {
-    // if (!id || id < 1 || id > 802) {
-    //   return Promise.reject();
-    // }
-    // set yellow light on header
-    this.setState({ headerLight: 'yellow' });
-    console.log(id);
+    this.headerLight = 'yellow';
     P.getPokemonByName(id)
-      .then(pokemonResponse => {
-        console.log(pokemonResponse);
-        this.setState({
-          pokemonID: id,
-          sprites: pokemonResponse.sprites,
-          headerLight: 'green',
-          pokemonObj: pokemonResponse
-        });
-
+      .then(response => {
+        this.pokemonResponse = response;
+        this.headerLight = 'green';
         return P.getPokemonSpeciesByName(id);
       })
       .then(speciesResponse => {
         const { flavor_text_entries, names, evolution_chain } = speciesResponse;
         this.setState({
+          pokemonID: id,
+          sprites: this.pokemonResponse.sprites,
+          pokemonObj: this.pokemonResponse,
           name: getEn(names)[0].name,
           descriptions: getEn(flavor_text_entries)
         });
@@ -49,7 +38,6 @@ class App extends Component {
         // set red light on headerheader
         console.log(err);
         this.setState({
-          headerLight: 'red',
           name: 'Invalid Pokemon',
           sprites: {
             front_default: 'err'
@@ -59,24 +47,17 @@ class App extends Component {
             sprites: { front_default: 'err' }
           }
         });
+        this.headerLight = 'red';
       });
   };
   componentDidMount() {
     this.getNewPokemon(this.state.pokemonID);
-    this.setState({ id: localStorage.getItem('id') });
+    if (localStorage.getItem('id'))
+      this.setState({ pokemonID: localStorage.getItem('id') });
   }
   render() {
     console.log('render');
-
-    // return this.getNewPokemon(this.state.pokemonID).then(() => {
-    const {
-      headerLight,
-      pokemonID,
-      pokemonObj,
-      descriptions,
-      sprites,
-      name
-    } = this.state;
+    const { pokemonID, pokemonObj, descriptions, sprites, name } = this.state;
     return (
       <div className="App">
         <OuterCase getNewPokemon={this.getNewPokemon} />
@@ -87,7 +68,7 @@ class App extends Component {
           id={pokemonID}
           pokemonObj={pokemonObj}
           sprites={sprites}
-          headerLight={headerLight}
+          headerLight={this.headerLight}
           descriptions={descriptions}
         />
         <InnerRight pokemonID={pokemonID} />

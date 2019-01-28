@@ -1,0 +1,15 @@
+#bio-box {
+  grid-row: 4 / 5;
+  grid-column: 1 / 4;
+  margin: 0;
+  background-color: rgb(103, 148, 123);
+  overflow: scroll;
+  margin: 2px;
+  border: 1px solid black;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.75em;
+}
+#bio-text {
+  overflow: scroll;
+  font-size: 0.75em;
+}

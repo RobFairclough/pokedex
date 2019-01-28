@@ -51,15 +51,15 @@ body {
 #inner-left-page {
   /* inline grid in media query for desktop view? */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 2fr 5fr 3fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1.7fr 5fr 0.75fr 2fr;
 }
 
 #sprite-container {
-  grid-column: 1 / span 3;
+  grid-column: 1 / span 4;
   grid-row: 2;
   background-color: rgb(255, 242, 205);
-  margin: 1em;
+  margin: 0.5em 1em;
   text-align: center;
 }
 .red-circle {
