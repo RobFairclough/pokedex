@@ -13,6 +13,9 @@
   border-bottom: 0.6em solid transparent;
   border-right: 0.6em solid blue;
 }
+#prev:hover {
+  border-right: 0.6em solid rgb(0, 195, 255);
+}
 
 #next {
   width: 0;
@@ -20,6 +23,9 @@
   border-top: 0.6em solid transparent;
   border-bottom: 0.6em solid transparent;
   border-left: 0.6em solid blue;
+}
+#next:hover {
+  border-left: 0.6em solid rgb(0, 195, 255);
 }
 #num-selector {
   width: 3em;

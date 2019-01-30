@@ -7,11 +7,14 @@ import './css/App.css';
 import Divider from './components/Divider';
 
 const Pokedex = require('pokedex-promise-v2');
-const P = new Pokedex();
+const options = {
+  protocol: 'https'
+};
+const P = new Pokedex(options);
 
 class App extends Component {
   state = {
-    pokemonID: localStorage.getItem('id') || 1,
+    pokemonID: 1,
     name: '',
     view: {
       frontBack: 'front',
@@ -20,7 +23,9 @@ class App extends Component {
   };
   headerLight = 'green';
   pokemonResponse = {};
+  speciesResponse = {};
   getNewPokemon = id => {
+    localStorage.setItem('id', id);
     this.headerLight = 'yellow';
     P.getPokemonByName(id)
       .then(response => {
@@ -29,8 +34,12 @@ class App extends Component {
         return P.getPokemonSpeciesByName(id);
       })
       .then(speciesResponse => {
-        const { flavor_text_entries, names, genera } = speciesResponse;
-        const { sprites, height, weight, types } = this.pokemonResponse;
+        this.speciesResponse = speciesResponse;
+        return P.getEvolutionChainById(id);
+      })
+      .then(evolutionResponse => {
+        const { flavor_text_entries, names, genera } = this.speciesResponse;
+        const { sprites, height, weight, types, stats } = this.pokemonResponse;
         this.setState({
           sprites,
           height,
@@ -40,9 +49,9 @@ class App extends Component {
           descriptions: getEn(flavor_text_entries),
           genus: getEn(genera)[0].genus,
           view: { frontBack: 'front', shiny: 'default' },
-          types
+          types: types.map(({ type }) => type.name),
+          stats
         });
-        localStorage.setItem('id', this.state.pokemonID);
       })
       .catch(err => {
         console.log(err);
@@ -73,10 +82,8 @@ class App extends Component {
             : 'front'
       }
     });
-    console.log(this.state.view);
   };
   render() {
-    console.log('render');
     const {
       pokemonID,
       pokemonObj,
@@ -87,7 +94,8 @@ class App extends Component {
       height,
       weight,
       types,
-      view
+      view,
+      stats
     } = this.state;
     return (
       <div className="App">
@@ -109,7 +117,7 @@ class App extends Component {
           view={view}
         />
         <Divider />
-        <InnerRight pokemonID={pokemonID} />
+        <InnerRight pokemonID={pokemonID} stats={stats} types={types} />
       </div>
     );
   }

@@ -1,8 +1,6 @@
 import React from 'react';
 import '../css/Bio.css';
 const Bio = ({ descriptions, height, weight, types }) => {
-  console.log(types);
-  const type = types ? types.map(({ type }) => type.name) : [];
   const rand = descriptions[Math.floor(Math.random() * descriptions.length)];
   const bioText = rand ? rand.flavor_text : 'not found';
   return (
@@ -12,7 +10,10 @@ const Bio = ({ descriptions, height, weight, types }) => {
       </div>
       <div id="stats-box" className="bio">
         <span id="stats-text">
-          H: {height} <br /> W: {weight} <br /> Type: {types && type.join(', ')}
+          H: <br />
+          {height && height / 10}M <br /> W:
+          <br />
+          {weight && weight / 10}kg <br />
         </span>
       </div>
     </>

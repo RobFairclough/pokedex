@@ -29,6 +29,15 @@ body {
   border: 2px solid black;
   border-radius: 5%;
   box-shadow: 8px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.hinge {
+  width: 1em;
+  height: 1em;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 @media only screen and (min-width: 600px) {
   .page {
