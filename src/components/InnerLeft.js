@@ -13,31 +13,31 @@ const InnerLeft = ({
   genus,
   height,
   weight,
-  descriptions = ''
+  descriptions = '',
+  types,
+  toggleView,
+  view
 }) => {
-  const image = name
-    ? sprites.front_default
-    : 'https://upload.wikimedia.org/wikipedia/commons/2/23/Pok%C3%A9_Ball.svg';
   return (
-    <>
-      <div id="inner-left-page" className="page">
-        <Header light={headerLight} />
-        <div id="sprite-container">
-          <shape className="red-circle" />
-          <shape id="gap-circle" />
-          <shape className="red-circle" />
-          {/* sprite component */}
-          <Sprite pokemonName={name} spriteImg={image} loc="main-sprite" />
-          <span className="poke-text">{name}</span>
-          <br />
-          <i className="poke-text">{genus}</i>
-        </div>
-        {/* buttons for image - cry, shiny toggle, front/back toggle */}
-        <Controls id={id} getNewPokemon={getNewPokemon} />
-        {/* flavor text and height/weight boxes */}
-        <Bio descriptions={descriptions} height={height} weight={weight} />
-      </div>
-    </>
+    <div id="inner-left-page" className="page">
+      <Header light={headerLight} />
+      <Sprite
+        pokemonName={name}
+        spriteImgs={sprites}
+        id={id}
+        loc="main-sprite"
+        genus={genus}
+        toggleView={toggleView}
+        view={view}
+      />
+      <Controls id={id} getNewPokemon={getNewPokemon} />
+      <Bio
+        descriptions={descriptions}
+        height={height}
+        weight={weight}
+        types={types}
+      />
+    </div>
   );
 };
 

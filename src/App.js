@@ -4,6 +4,7 @@ import InnerLeft from './components/InnerLeft';
 import InnerRight from './components/InnerRight';
 import { getEn } from './utils';
 import './css/App.css';
+import Divider from './components/Divider';
 
 const Pokedex = require('pokedex-promise-v2');
 const P = new Pokedex();
@@ -11,7 +12,11 @@ const P = new Pokedex();
 class App extends Component {
   state = {
     pokemonID: localStorage.getItem('id') || 1,
-    name: ''
+    name: '',
+    view: {
+      frontBack: 'front',
+      shiny: 'default'
+    }
   };
   headerLight = 'green';
   pokemonResponse = {};
@@ -19,7 +24,6 @@ class App extends Component {
     this.headerLight = 'yellow';
     P.getPokemonByName(id)
       .then(response => {
-        console.log(response);
         this.pokemonResponse = response;
         this.headerLight = 'green';
         return P.getPokemonSpeciesByName(id);
@@ -34,7 +38,9 @@ class App extends Component {
           pokemonID: id,
           name: getEn(names)[0].name,
           descriptions: getEn(flavor_text_entries),
-          genus: getEn(genera)[0].genus
+          genus: getEn(genera)[0].genus,
+          view: { frontBack: 'front', shiny: 'default' },
+          types
         });
         localStorage.setItem('id', this.state.pokemonID);
       })
@@ -52,6 +58,23 @@ class App extends Component {
     if (localStorage.getItem('id'))
       this.setState({ pokemonID: localStorage.getItem('id') });
   }
+
+  toggleView = criteria => {
+    this.setState({
+      view: {
+        ...this.state.view,
+        [criteria]:
+          criteria === 'shiny'
+            ? this.state.view.shiny === 'shiny'
+              ? 'default'
+              : 'shiny'
+            : this.state.view.frontBack === 'front'
+            ? 'back'
+            : 'front'
+      }
+    });
+    console.log(this.state.view);
+  };
   render() {
     console.log('render');
     const {
@@ -63,11 +86,12 @@ class App extends Component {
       genus,
       height,
       weight,
-      type
+      types,
+      view
     } = this.state;
     return (
       <div className="App">
-        <OuterCase getNewPokemon={this.getNewPokemon} />
+        {/* <OuterCase getNewPokemon={this.getNewPokemon} /> */}
         <InnerLeft
           getNewPokemon={this.getNewPokemon}
           pokemonID={pokemonID}
@@ -80,8 +104,11 @@ class App extends Component {
           genus={genus}
           height={height}
           weight={weight}
-          type={type}
+          types={types}
+          toggleView={this.toggleView}
+          view={view}
         />
+        <Divider />
         <InnerRight pokemonID={pokemonID} />
       </div>
     );
