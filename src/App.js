@@ -14,7 +14,7 @@ const P = new Pokedex(options);
 
 class App extends Component {
   state = {
-    pokemonID: 1,
+    pokemonID: localStorage.id ? localStorage.id : 1,
     name: '',
     view: {
       frontBack: 'front',

@@ -2,7 +2,7 @@
 
 .App {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-content: center;
   align-items: center;
   background-color: #52acff;
@@ -14,7 +14,7 @@ body {
 
 .page {
   height: 100vh;
-  width: 100vw;
+  min-width: 100vw;
   max-width: 350px;
   max-height: 700px;
   border: solid 2px black;
@@ -40,9 +40,13 @@ body {
   border-bottom: 2px solid black;
 }
 @media only screen and (min-width: 600px) {
+  .App {
+    justify-content: center;
+  }
   .page {
     /* temp */
     height: 500px;
+    min-width: 250px;
     width: 250px;
   }
   #divider {
