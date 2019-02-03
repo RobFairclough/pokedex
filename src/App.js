@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import OuterCase from './components/OuterCase';
 import InnerLeft from './components/InnerLeft';
 import InnerRight from './components/InnerRight';
 import { getEn } from './utils';
