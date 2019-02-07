@@ -4,9 +4,9 @@ const Sprite = props => {
   const { toggleView, view } = props;
   return (
     <div id="sprite-container">
-      <shape className="red-circle" onClick={() => toggleView('shiny')} />
-      <shape id="gap-circle" />
-      <shape className="red-circle" onClick={() => toggleView('frontBack')} />
+      <span className="red-circle" onClick={() => toggleView('shiny')} />
+      <span id="gap-circle" />
+      <span className="red-circle" onClick={() => toggleView('frontBack')} />
       <div id="sprite-bg">
         <img
           src={

@@ -7,7 +7,7 @@
   grid-column: 1 / span 3;
   grid-row: 1 / 2;
 }
-#loading-lights shape {
+#loading-lights span {
   float: left;
 }
 .loading-orb {

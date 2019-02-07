@@ -6,20 +6,20 @@ const Header = props => {
   return (
     <>
       {/* blue orb thing */}
-      {/* loading indicators, ul of 3 shapes */}
+      {/* loading indicators, ul of 3 spans */}
       <ul id="loading-lights">
-        <shape id="blue-orb" />
-        <shape
+        <span id="blue-orb" />
+        <span
           id={light === 'red' ? 'red-active' : 'red'}
           className={light === 'red' ? 'loading-orb orb-active' : 'loading-orb'}
         />
-        <shape
+        <span
           id={light === 'yellow' ? 'yellow-active' : 'yellow'}
           className={
             light === 'yellow' ? 'loading-orb orb-active' : 'loading-orb'
           }
         />
-        <shape
+        <span
           id={light === 'green' ? 'green-active' : 'green'}
           className={
             light === 'green' ? 'loading-orb orb-active' : 'loading-orb'

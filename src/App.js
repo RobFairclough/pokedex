@@ -22,8 +22,8 @@ class App extends Component {
     }
   };
   pokemonResponse = {};
-  speciesResponse = {};
   getNewPokemon = id => {
+    console.log('req', id);
     localStorage.setItem('id', id);
     this.setState({ headerLight: 'yellow' });
     P.getPokemonByName(id)
@@ -32,12 +32,9 @@ class App extends Component {
         return P.getPokemonSpeciesByName(id);
       })
       .then(speciesResponse => {
-        this.speciesResponse = speciesResponse;
-        return P.getEvolutionChainById(id);
-      })
-      .then(evolutionResponse => {
-        const { flavor_text_entries, names, genera } = this.speciesResponse;
+        const { flavor_text_entries, names, genera } = speciesResponse;
         const { sprites, height, weight, types, stats } = this.pokemonResponse;
+        console.dir(sprites);
         this.setState({
           sprites,
           height,
