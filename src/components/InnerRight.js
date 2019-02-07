@@ -8,7 +8,7 @@ const InnerRight = ({ stats, types }) => {
         <ul id="stat-list">
           {stats &&
             stats.map(stat => (
-              <li key={stat.name}>
+              <li key={stat.stat.name}>
                 {stat.stat.name.replace('special', 'SP')}:{stat.base_stat}
               </li>
             ))}

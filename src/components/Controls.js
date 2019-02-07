@@ -6,7 +6,7 @@ class Controls extends Component {
     id: this.props.id
   };
   handleChangeButton = direction => {
-    const { id } = this.props;
+    const { id } = this.state;
     const newId = direction ? +id + 1 : +id - 1;
     if (newId && newId > 0 && newId <= 802) {
       this.props.getNewPokemon(newId);
@@ -15,21 +15,26 @@ class Controls extends Component {
   };
   handleChange = e => {
     const newId = e.target.value;
-    if (newId && newId > 0 && newId <= 802) {
-      this.props.getNewPokemon(newId);
-      // this.setState({ id: newId });
-    }
+    this.setState({ id: newId });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+    const { id } = this.state;
+    const { getNewPokemon } = this.props;
+    getNewPokemon(+id);
   };
   render() {
     return (
       <div className="pokedex-controls">
         <shape id="prev" onClick={() => this.handleChangeButton(false)} />
-        <input
-          type="number"
-          id="num-selector"
-          value={this.props.id}
-          onChange={this.handleChange}
-        />
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="number"
+            id="num-selector"
+            value={this.state.id}
+            onChange={this.handleChange}
+          />
+        </form>
         <shape id="next" onClick={() => this.handleChangeButton(true)} />
       </div>
     );

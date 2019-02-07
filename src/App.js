@@ -15,21 +15,20 @@ class App extends Component {
   state = {
     pokemonID: localStorage.id ? localStorage.id : 1,
     name: '',
+    headerLight: 'yellow',
     view: {
       frontBack: 'front',
       shiny: 'default'
     }
   };
-  headerLight = 'green';
   pokemonResponse = {};
   speciesResponse = {};
   getNewPokemon = id => {
     localStorage.setItem('id', id);
-    this.headerLight = 'yellow';
+    this.setState({ headerLight: 'yellow' });
     P.getPokemonByName(id)
       .then(response => {
         this.pokemonResponse = response;
-        this.headerLight = 'green';
         return P.getPokemonSpeciesByName(id);
       })
       .then(speciesResponse => {
@@ -49,16 +48,17 @@ class App extends Component {
           genus: getEn(genera)[0].genus,
           view: { frontBack: 'front', shiny: 'default' },
           types: types.map(({ type }) => type.name),
-          stats
+          stats,
+          headerLight: 'green'
         });
       })
       .catch(err => {
         console.log(err);
         this.setState({
           pokemonID: '',
-          name: ''
+          name: '',
+          headerLight: 'red'
         });
-        this.headerLight = 'red';
       });
   };
   componentDidMount() {
@@ -94,7 +94,8 @@ class App extends Component {
       weight,
       types,
       view,
-      stats
+      stats,
+      headerLight
     } = this.state;
     return (
       <div className="App">
@@ -106,7 +107,7 @@ class App extends Component {
           id={pokemonID}
           pokemonObj={pokemonObj}
           sprites={sprites}
-          headerLight={this.headerLight}
+          headerLight={headerLight}
           descriptions={descriptions}
           genus={genus}
           height={height}
