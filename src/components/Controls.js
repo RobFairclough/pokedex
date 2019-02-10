@@ -1,45 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import '../css/Controls.css';
 
-class Controls extends Component {
-  state = {
-    id: this.props.id
-  };
-  handleChangeButton = direction => {
-    const { id } = this.state;
-    const { getNewPokemon } = this.props;
+const Controls = props => {
+  const [id, setId] = useState(props.id);
+  const handleChangeButton = direction => {
+    const { getNewPokemon } = props;
     const newId = +id + direction;
     if (newId && newId > 0 && newId <= 805) {
       getNewPokemon(newId);
-      this.setState({ id: newId });
+      setId(newId);
     }
   };
-  handleChange = e => {
-    const newId = e.target.value;
-    this.setState({ id: newId });
+  const handleChange = ({ target: { value } }) => {
+    setId(value);
   };
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const { id } = this.state;
-    const { getNewPokemon } = this.props;
+    const { getNewPokemon } = props;
     getNewPokemon(+id);
   };
-  render() {
-    return (
-      <div className="pokedex-controls">
-        <span id="prev" onClick={() => this.handleChangeButton(-1)} />
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="number"
-            id="num-selector"
-            value={this.state.id}
-            onChange={this.handleChange}
-          />
-        </form>
-        <span id="next" onClick={() => this.handleChangeButton(1)} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="pokedex-controls">
+      <span id="prev" onClick={() => handleChangeButton(-1)} />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="number"
+          id="num-selector"
+          value={id}
+          onChange={handleChange}
+        />
+      </form>
+      <span id="next" onClick={() => handleChangeButton(1)} />
+    </div>
+  );
+};
 
 export default Controls;
