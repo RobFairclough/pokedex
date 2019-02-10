@@ -22,41 +22,34 @@ class App extends Component {
     }
   };
   pokemonResponse = {};
-  getNewPokemon = id => {
-    console.log('req', id);
+  getNewPokemon = async id => {
     localStorage.setItem('id', id);
     this.setState({ headerLight: 'yellow' });
-    P.getPokemonByName(id)
-      .then(response => {
-        this.pokemonResponse = response;
-        return P.getPokemonSpeciesByName(id);
-      })
-      .then(speciesResponse => {
-        const { flavor_text_entries, names, genera } = speciesResponse;
-        const { sprites, height, weight, types, stats } = this.pokemonResponse;
-        console.dir(sprites);
-        this.setState({
-          sprites,
-          height,
-          weight,
-          pokemonID: id,
-          name: getEn(names)[0].name,
-          descriptions: getEn(flavor_text_entries),
-          genus: getEn(genera)[0].genus,
-          view: { frontBack: 'front', shiny: 'default' },
-          types: types.map(({ type }) => type.name),
-          stats,
-          headerLight: 'green'
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({
-          pokemonID: '',
-          name: '',
-          headerLight: 'red'
-        });
+    const pokemon = await P.getPokemonByName(id);
+    const { sprites, height, weight, types, stats } = pokemon;
+    const species = await P.getPokemonSpeciesByName(id);
+    const { flavor_text_entries, names, genera } = species;
+    if (pokemon && species) {
+      this.setState({
+        sprites,
+        height,
+        weight,
+        pokemonID: id,
+        name: getEn(names)[0].name,
+        descriptions: getEn(flavor_text_entries),
+        genus: getEn(genera)[0].genus,
+        view: { frontBack: 'front', shiny: 'default' },
+        types: types.map(({ type }) => type.name),
+        stats,
+        headerLight: 'green'
       });
+    } else {
+      this.setState({
+        pokemonID: '',
+        name: '',
+        headerLight: 'red'
+      });
+    }
   };
   componentDidMount() {
     this.getNewPokemon(this.state.pokemonID);

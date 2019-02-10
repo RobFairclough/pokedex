@@ -1,0 +1,16 @@
+<svg width="400" height="100" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="102" width="402" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="89.450012" x2="169.5" y1="88.450012" x1="1.5" stroke-width="1.5" stroke="#000" fill="none"/>
+  <path d="m170.5,88.450012c0,0 0,0 1,0c0,0 0,0 1,0c0,0 0,0 0,0c1,0 1,1 1,1c1,0 1,0 2,0c0,0 1,0 1,0c0,0 1,0 1,0c1,0 1,0 2,0c0,0 0,0 1,0c0,0 1,0 2,0c0,0 1,0 1,0c0,0 1,0 1,0c1,0 1,0 2,0c0,0 1,0 2,0c0,0 1,0 2,0c2,0 2,0 3,0c0,0 1,0 1,0c0,0 0,0 1,0c0,0 0,0 1,0c0,0 1,0 1,0c0,0 0,0 1,-1c0,0 0,0 1,0c0,0 0.292892,0.707108 1,0c0.707108,-0.707108 0,-1 1,-1c0,0 0,0 1,0c0,0 0,0 1,-1c0,0 0,0 1,0c0,0 0,-1 1,-1c0,0 0,0 1,0c0,0 0,0 0,-1c0,0 0,0 1,0c0,0 1,-1 1,-1c1,0 0.292892,-0.292892 1,-1c0.707108,-0.707108 1,0 1,0c0,0 0,-1 1,-1c0,0 0,0 0,0c1,-1 1,-1 1,-1c0,0 0,-1 1,-1c0,0 0,0 0,-1c0,0 0,-1 1,-1c0,0 0,-1 0,-1c0,0 -0.707108,-0.292892 0,-1c0.707108,-0.707108 1,-1 1,-1c0,0 0,-1 0,-1c0,0 0,-1 1,-1c0,0 0,0 0,-1c0,0 1,0 1,0c0,-1 1,-1 1,-1c2,0 3,-1 4,-1c0,0 1.292892,0.707108 2,0c0.707108,-0.707108 1,-1 2,-1c0,0 1,0 1,0c1,0 1,0 2,0c0,0 1,0 1,-1c0,0 1,0 1,0c0,0 1,0 1,0c1,0 1,0 2,0c1,0 1,0 1,0c1,0 1,0 2,0c0,0 0,0 1,0c1,0 1,0 2,0c0,0 1,0 2,0c1,0 1,0 2,0c1,0 2,0 2,0l1,0l1,0l0,0" id="svg_4" stroke-width="1.5" stroke="#000" fill="none"/>
+  <line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_5" y2="68.450012" x2="249.5" y1="71.450012" x1="402.5" stroke-width="1.5" stroke="#000" fill="none"/>
+ </g>
+</svg>

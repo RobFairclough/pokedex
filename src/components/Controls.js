@@ -6,7 +6,6 @@ class Controls extends Component {
     id: this.props.id
   };
   handleChangeButton = direction => {
-    console.log('click');
     const { id } = this.state;
     const { getNewPokemon } = this.props;
     const newId = +id + direction;

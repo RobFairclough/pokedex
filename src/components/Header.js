@@ -5,8 +5,6 @@ const Header = props => {
   const { light } = props;
   return (
     <>
-      {/* blue orb thing */}
-      {/* loading indicators, ul of 3 spans */}
       <ul id="loading-lights">
         <span id="blue-orb" />
         <span
