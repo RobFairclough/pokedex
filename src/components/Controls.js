@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import '../css/Controls.css';
 
-const Controls = props => {
-  const [id, setId] = useState(props.id);
+const Controls = ({ id: currentId, getNewPokemon }) => {
+  const [id, setId] = useState(currentId);
   const handleChangeButton = direction => {
-    const { getNewPokemon } = props;
     const newId = +id + direction;
     if (newId && newId > 0 && newId <= 805) {
       getNewPokemon(newId);
@@ -16,7 +15,6 @@ const Controls = props => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    const { getNewPokemon } = props;
     getNewPokemon(+id);
   };
   return (
