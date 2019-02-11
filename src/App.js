@@ -15,21 +15,36 @@ class App extends Component {
   state = {
     pokemonID: localStorage.id ? localStorage.id : 1,
     name: '',
-    headerLight: 'yellow',
+    headerLight: 'red',
     view: {
       frontBack: 'front',
       shiny: 'default'
-    }
+    },
+    sprites: '',
+    stats: '',
+    descriptions: '',
+    types: '',
+    genus: '',
+    height: '',
+    weight: '',
+    habitat: ''
   };
-  pokemonResponse = {};
+  baseState = { ...this.state };
   getNewPokemon = async id => {
     localStorage.setItem('id', id);
-    this.setState({ headerLight: 'yellow' });
-    const pokemon = await P.getPokemonByName(id);
-    const { sprites, height, weight, types, stats } = pokemon;
-    const species = await P.getPokemonSpeciesByName(id);
-    const { flavor_text_entries, names, genera } = species;
-    if (pokemon && species) {
+    this.setState({
+      ...this.baseState,
+      headerLight: 'yellow',
+      name: 'loading...',
+      descriptions: [{ flavor_text: 'finding Pokémon...' }]
+    });
+    try {
+      const pokemon = await P.getPokemonByName(id);
+      const species = await P.getPokemonSpeciesByName(id);
+      console.log(pokemon);
+      console.log(species);
+      const { sprites, height, weight, types, stats } = pokemon;
+      const { flavor_text_entries, names, genera, habitat } = species;
       this.setState({
         sprites,
         height,
@@ -41,36 +56,34 @@ class App extends Component {
         view: { frontBack: 'front', shiny: 'default' },
         types: types.map(({ type }) => type.name),
         stats,
-        headerLight: 'green'
+        headerLight: 'green',
+        habitat
       });
-    } else {
-      this.setState({
-        pokemonID: '',
-        name: '',
-        headerLight: 'red'
-      });
+    } catch (err) {
+      this.setState(this.baseState);
     }
   };
   componentDidMount() {
-    this.getNewPokemon(this.state.pokemonID);
+    const id = localStorage.getItem('id') || this.state.pokemonID || 1;
+    this.getNewPokemon(id);
     if (localStorage.getItem('id'))
       this.setState({ pokemonID: localStorage.getItem('id') });
   }
 
   toggleView = criteria => {
-    this.setState({
+    this.setState(prevState => ({
       view: {
-        ...this.state.view,
+        ...prevState.view,
         [criteria]:
           criteria === 'shiny'
-            ? this.state.view.shiny === 'shiny'
+            ? prevState.view.shiny === 'shiny'
               ? 'default'
               : 'shiny'
-            : this.state.view.frontBack === 'front'
+            : prevState.view.frontBack === 'front'
             ? 'back'
             : 'front'
       }
-    });
+    }));
   };
   render() {
     const {
@@ -85,6 +98,7 @@ class App extends Component {
       types,
       view,
       stats,
+      habitat,
       headerLight
     } = this.state;
     return (
@@ -107,7 +121,12 @@ class App extends Component {
           view={view}
         />
         <Divider />
-        <InnerRight pokemonID={pokemonID} stats={stats} types={types} />
+        <InnerRight
+          pokemonID={pokemonID}
+          stats={stats}
+          types={types}
+          habitat={habitat}
+        />
       </div>
     );
   }

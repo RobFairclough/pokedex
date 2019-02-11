@@ -1,14 +1,19 @@
 #stat-list {
   list-style-type: none;
   background-color: rgb(46, 46, 46);
-  color: white;
   padding: 0.5em;
   margin: 0.5em;
   margin-top: 2em;
   border: 1px solid black;
+  color: white;
   font-family: 'Press Start 2P';
   font-size: 0.6em;
   border-radius: 2.5%;
+}
+.black-screen-text {
+  color: white;
+  font-family: 'Press Start 2P';
+  font-size: 0.6em;
 }
 
 #blue-buttons {

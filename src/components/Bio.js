@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/Bio.css';
 const Bio = ({ descriptions, height, weight, types }) => {
   const rand = descriptions[Math.floor(Math.random() * descriptions.length)];
-  const bioText = rand ? rand.flavor_text : 'not found';
+  const bioText = rand ? rand.flavor_text : 'Pokémon not found';
   return (
     <>
       <div id="bio-box" className="bio">
