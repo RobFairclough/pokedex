@@ -4,4 +4,8 @@ This pokedéx is a project for practising front-end development using React and 
 
 ## Using the Pokédex
 
-The Pokédex has a selector for choosing your pokémon, and two buttons above the sprite for altering the view.
+The Pokédex has a selector for choosing your pokémon, and two buttons above the sprite for altering the view. To select pokemon by number, type a number in to the inputbox and hit enter.
+
+## Installing locally
+
+To get a copy of the pokedex locally, fork/clone this repo to your local machine, run `npm install` in the project folder to install dependencies and run `npm start` to start a local version of the pokedex on your machine.
