@@ -9,3 +9,9 @@ The Pokédex has a selector for choosing your pokémon, and two buttons above th
 ## Installing locally
 
 To get a copy of the pokedex locally, fork/clone this repo to your local machine, run `npm install` in the project folder to install dependencies and run `npm start` to start a local version of the pokedex on your machine.
+
+## Dependencies
+
+This app was built using React 16.8.0, and requires a version of react at or above that, due to the hooks introduced in 16.8 which are used.
+
+It also makes calls to the pokeapi through the wrapper library provided - Pokédex Promise v2 - requiring version 3.1.1 or above.
