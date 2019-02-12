@@ -2,7 +2,6 @@
 
 .App {
   display: flex;
-  /* justify-content: center; */
   align-content: center;
   align-items: center;
   background-color: #52acff;
@@ -76,7 +75,6 @@
   border: black solid 2px;
 }
 #inner-left-page {
-  /* inline grid in media query for desktop view? */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1.7fr 5fr 0.75fr 2fr;

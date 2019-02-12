@@ -8,10 +8,7 @@ const OuterCase = props => {
   };
   return (
     <div id="outer-case" className={open ? 'page open' : 'page closed'}>
-      {/* <Header /> */}
-      {/* element to hide top of case for header */}
       <span onClick={openPokedex} id="open-button" />
-      {/* ridge span */}
       <span id="case-ridge" />
     </div>
   );
